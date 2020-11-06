@@ -6,14 +6,23 @@ class Sneakers:
 
 class Warehouse:
     def __init__(self):
-        self._list = list()
+        self._id = 0
+        self._sneakers = dict()
 
     def add(self, sneakers):
-        self._list.append(sneakers)
+        self._id = self._id + 1
+        self._sneakers[self._id] = sneakers
+
+    def remove(self, sneakers):
+        if sneakers is not None:
+            for i in self._sneakers.keys():
+                if self._sneakers[i] == sneakers:
+                    self._sneakers.pop(i, None)
 
     def display(self):
-        for l in self._list:
-            print(f'name - {l.name}\ncount-{l.count}')
+        print("Товары на складе:")
+        for key, value in self._sneakers.items():
+            print(f'id - {key};name - {value.name};count - {value.count}')
 
 
 warehouse = Warehouse()
